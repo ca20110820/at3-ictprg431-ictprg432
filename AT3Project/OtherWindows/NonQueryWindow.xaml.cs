@@ -109,12 +109,35 @@ namespace AT3Project.OtherWindows
 
         private void listviewTables_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            string selectedTableName = (string)listviewTables.SelectedItem;
+            if (string.IsNullOrEmpty(selectedTableName)) return;
 
+            try
+            {
+                string sqlQuery = @$"DESCRIBE {selectedTableName};";
+                datagridTableInfo.ItemsSource = null;
+                datagridTableInfo.ItemsSource = mainWindow.database.GetQueryAsDataView(sqlQuery);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
         }
 
         private void buttonRefresh_Click(object sender, RoutedEventArgs e)
         {
             UpdateTableNamesListView();
+        }
+
+        private void datagridTableInfo_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string header = e.Column.Header.ToString();
+
+            // Replace all underscores with two underscores, to prevent AccessKey handling
+            e.Column.Header = header.Replace("_", "__");
+
+            if (e.PropertyType == typeof(DateTime))
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy HH:mm:ss";
         }
     }
 }
