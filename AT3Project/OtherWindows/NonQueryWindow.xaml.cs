@@ -76,6 +76,7 @@ namespace AT3Project.OtherWindows
         {
             listviewTables.ItemsSource = null;
             listviewTables.ItemsSource = GetTableNames();
+            listviewTables.SelectedItem = null;
         }
 
         private void buttonRunNonQuery_Click(object sender, RoutedEventArgs e)
@@ -127,6 +128,7 @@ namespace AT3Project.OtherWindows
         private void buttonRefresh_Click(object sender, RoutedEventArgs e)
         {
             UpdateTableNamesListView();
+            datagridTableInfo.ItemsSource = null;
         }
 
         private void datagridTableInfo_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

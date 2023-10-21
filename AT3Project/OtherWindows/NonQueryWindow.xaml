@@ -35,16 +35,25 @@
                     Click="buttonRefresh_Click" />
         </WrapPanel>
 
-        <WrapPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" 
-                   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5,5,5,5">
-            <Label Content="Tables: " FontSize="20" FontWeight="Bold"/>
-            <ListView x:Name="listviewTables" SelectionChanged="listviewTables_SelectionChanged" />
+        <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <Label Content="Table Info: " FontSize="20" FontWeight="Bold"/>
-            <DataGrid x:Name="datagridTableInfo" IsReadOnly="True" 
+            <Label Content="Tables: " Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right" MaxHeight="70" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <ListView x:Name="listviewTables" Grid.Row="0" Grid.Column="1" SelectionChanged="listviewTables_SelectionChanged" Margin="5"/>
+
+            <Label Content="Table Info: " Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Right" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <DataGrid x:Name="datagridTableInfo" Grid.Row="1" Grid.Column="1" IsReadOnly="True" Margin="5"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" 
-                  Height="Auto" Width="Auto" MaxHeight="300" Margin="5,0,10,0" AutoGeneratingColumn="datagridTableInfo_AutoGeneratingColumn" />
-        </WrapPanel>
-
+                  Height="Auto" Width="Auto" MaxHeight="300" AutoGeneratingColumn="datagridTableInfo_AutoGeneratingColumn" />
+        </Grid>
+        
     </Grid>
 </Window>
