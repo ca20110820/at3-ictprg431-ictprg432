@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace AT3Project.OtherWindows
             textboxNonQuery.PreviewKeyDown += textboxNonQuery_PreviewKeyDown;
         }
 
-        private DataView? GetTableView(string tableName)
+        private DataView? GetTableNameAsView(string tableName)
         {
             try
             {
@@ -43,6 +44,36 @@ namespace AT3Project.OtherWindows
                 MessageBox.Show(error.Message, "Error");
                 return null;
             }
+        }
+
+        private List<string> GetTableNames()
+        {
+            List<string> outList = new();
+
+            // Get Tables, exclude SQL Views
+            string sqlQuery = @$"SELECT table_name FROM information_schema.tables WHERE table_schema = '{mainWindow.database.DBName}' AND table_type = 'BASE TABLE';";
+
+            DataView dv = mainWindow.database.GetQueryAsDataView(sqlQuery);
+
+            foreach(DataRowView row in dv)
+            {
+                try
+                {
+                    outList.Add(row[0].ToString());
+                }
+                catch(Exception error)
+                {
+                    Trace.WriteLine(error.ToString());
+                }
+            }
+
+            return outList;
+        }
+
+        private void UpdateTableNamesListView()
+        {
+            listviewTables.ItemsSource = null;
+            listviewTables.ItemsSource = GetTableNames();
         }
 
         private void buttonRunNonQuery_Click(object sender, RoutedEventArgs e)
