@@ -22,6 +22,27 @@ namespace AT3Project.OtherWindows
         public QueryWindow()
         {
             InitializeComponent();
+
+            textboxQuery.PreviewKeyDown += textboxQuery_PreviewKeyDown;
+        }
+
+        private void buttonRunQuery_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void textboxQuery_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
+            {
+                // Prevent the default behavior of adding a tab character
+                e.Handled = true;
+
+                // Insert 4 spaces instead of a tab character
+                int caretIndex = textboxQuery.CaretIndex;
+                textboxQuery.Text = textboxQuery.Text.Insert(caretIndex, "    ");
+                textboxQuery.CaretIndex = caretIndex + 4;
+            }
         }
     }
 }
