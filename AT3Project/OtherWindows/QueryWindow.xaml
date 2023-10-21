@@ -33,7 +33,9 @@
         </WrapPanel>
 
         <DataGrid x:Name="datagridQuery" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" IsReadOnly="True" 
-                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300" MaxHeight="300" Margin="5,0,10,0">
+                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                  Height="300" MaxHeight="300" Margin="5,0,10,0" AutoGeneratingColumn="datagridQuery_AutoGeneratingColumn"
+                  >
         </DataGrid>
     </Grid>
 </Window>
