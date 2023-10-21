@@ -80,7 +80,8 @@ namespace AT3Project
 
         private void menuitemQueries_NonQuery_Click(object sender, RoutedEventArgs e)
         {
-
+            NonQueryWindow nonQueryWindow = new NonQueryWindow(this);
+            nonQueryWindow.Show();
         }
     }
 }
