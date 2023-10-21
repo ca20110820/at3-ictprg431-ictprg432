@@ -74,7 +74,8 @@ namespace AT3Project
 
         private void menuitemQueries_Query_Click(object sender, RoutedEventArgs e)
         {
-
+            QueryWindow queryWindow = new QueryWindow();
+            queryWindow.Show();
         }
 
         private void menuitemQueries_NonQuery_Click(object sender, RoutedEventArgs e)
