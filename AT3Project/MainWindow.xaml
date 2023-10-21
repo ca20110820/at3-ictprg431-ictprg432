@@ -18,8 +18,10 @@
                     <MenuItem x:Name="menuitemEdit_Clear" Header="_Clear" Click="menuitemEdit_Clear_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Queries">
-                    <MenuItem x:Name="menuitemQueries_Query" Header="_Query" Click="menuitemQueries_Query_Click" />
-                    <MenuItem x:Name="menuitemQueries_NonQuery" Header="_Non Query" Click="menuitemQueries_NonQuery_Click"/>
+                    <MenuItem x:Name="menuitemQueries_Query" Header="_Query" ToolTip="Creating Custom Queries."
+                              Click="menuitemQueries_Query_Click"/>
+                    <MenuItem x:Name="menuitemQueries_NonQuery" Header="_Non Query" ToolTip="Executing Non Queries. Excellent for CRUD Operations." 
+                              Click="menuitemQueries_NonQuery_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Settings">
                     <MenuItem x:Name="menuitemSettings_Connection" Header="_Connection" Click="menuitemSettings_Connection_Click" />
