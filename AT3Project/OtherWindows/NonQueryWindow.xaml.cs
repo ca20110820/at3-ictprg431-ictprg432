@@ -87,6 +87,8 @@ namespace AT3Project.OtherWindows
             {
                 string sqlNonQuery = @$"{textboxNonQuery.Text}";
                 mainWindow.database.RunNonQuery(sqlNonQuery);
+
+                UpdateTableNamesListView();
             }
             catch (Exception error)
             {
