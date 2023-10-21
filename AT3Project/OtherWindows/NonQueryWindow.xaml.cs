@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,13 +32,27 @@ namespace AT3Project.OtherWindows
             textboxNonQuery.PreviewKeyDown += textboxNonQuery_PreviewKeyDown;
         }
 
+        private DataView? GetTableView(string tableName)
+        {
+            try
+            {
+                return mainWindow.database.GetTableAsDataView(tableName);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+                return null;
+            }
+        }
+
         private void buttonRunNonQuery_Click(object sender, RoutedEventArgs e)
         {
 
 
             try
             {
-
+                string sqlNonQuery = @$"{textboxNonQuery.Text}";
+                mainWindow.database.RunNonQuery(sqlNonQuery);
             }
             catch (Exception error)
             {
@@ -57,6 +72,11 @@ namespace AT3Project.OtherWindows
                 textboxNonQuery.Text = textboxNonQuery.Text.Insert(caretIndex, "    ");
                 textboxNonQuery.CaretIndex = caretIndex + 4;
             }
+        }
+
+        private void listviewTables_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
