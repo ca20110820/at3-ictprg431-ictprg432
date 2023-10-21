@@ -71,5 +71,15 @@ namespace AT3Project
             ConnectionWindow connectionWindow = new(this);
             connectionWindow.Show();
         }
+
+        private void menuitemQueries_Query_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void menuitemQueries_NonQuery_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
