@@ -12,8 +12,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
 
         <TextBox x:Name="textboxQuery" 
@@ -25,15 +25,15 @@
                  AcceptsReturn="True"
                  AcceptsTab="True"
                  TextWrapping="Wrap" 
-                 MaxHeight="217.02" MaxWidth="400" PreviewKeyDown="textboxQuery_PreviewKeyDown"
+                 MaxHeight="217.02" MaxWidth="400" PreviewKeyDown="textboxQuery_PreviewKeyDown" Margin="7,0,5,0"
                  />
 
         <WrapPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="buttonRunQuery" Content="Run" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" MinWidth="50" Click="buttonRunQuery_Click"/>
         </WrapPanel>
 
-        <DataGrid x:Name="datagridQuery" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" IsReadOnly="True" 
-                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="225">
+        <DataGrid x:Name="datagridQuery" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" IsReadOnly="True" 
+                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300" MaxHeight="300" Margin="5,0,10,0">
         </DataGrid>
     </Grid>
 </Window>
