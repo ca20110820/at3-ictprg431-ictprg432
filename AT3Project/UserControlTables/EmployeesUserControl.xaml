@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="AT3Project.UserControlTables.EmployeesUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AT3Project.UserControlTables"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1.7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Forms -->
+        <Grid Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="ID" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Given Name" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Family Name" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Date Of Birth" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Gender Identity" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Gross Salary" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Supervisor ID" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Branch ID" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+
+            <TextBox x:Name="textboxEmployeeID" Text="{Binding ID, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <TextBox x:Name="textboxEmployeeGivenName" Text="{Binding GivenName, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <TextBox x:Name="textboxEmployeeFamilyName" Text="{Binding FamilyName, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <DatePicker x:Name="datepickerEmployeeDOB" SelectedDate="{Binding DateOfBirth, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <ComboBox x:Name="comboboxEmployeeGenderIdentity" SelectedItem="{Binding GenderIdentity, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="textboxEmployeeGrossSalary" Text="{Binding GrossSalary, Mode=TwoWay}" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <TextBox x:Name="textboxEmployeeSupervisorID" Text="{Binding SupervisorID, Mode=TwoWay}" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <TextBox x:Name="textboxEmployeeBranchID" Text="{Binding BranchID, Mode=TwoWay}" Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+        </Grid>
+
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,25,0,0">
+            <Button x:Name="buttonEmployeeAdd" Content="Add" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonEmployeeAdd_Click"/>
+            <Button x:Name="buttonEmployeeUpdate" Content="Update" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonEmployeeUpdate_Click"/>
+            <Button x:Name="buttonEmployeeDelete" Content="Delete" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonEmployeeDelete_Click"/>
+            <Button x:Name="buttonEmployeeShowAll" Content="Show All" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonEmployeeShowAll_Click"/>
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="datagridEmployees" Grid.Row="0" Grid.Column="1" IsReadOnly="True" 
+                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="225" 
+                  AutoGeneratingColumn="datagridEmployees_AutoGeneratingColumn" SelectionChanged="datagridEmployees_SelectionChanged">
+        </DataGrid>
+
+        <!-- Filters -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Show Employees by Name" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right"/>
+            <Label Content="Show Employees by Branch Number" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Right"/>
+            <Label Content="Show Employees by Salary at least $" Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Right"/>
+            <Label Content="Show Employee Sales" Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Right"/>
+
+            <TextBox x:Name="textboxEmployeeShowByName" Text=""  Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <ComboBox x:Name="comboboxEmployeeShowByBranchNumber" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textboxEmployeeShowBySalary" Text="70000" Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textboxEmployeeShowSales" Text="" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+            <Button x:Name="buttonEmployeeShowByName" Content="Show" Grid.Row="0" Grid.Column="2" Click="buttonEmployeeShowByName_Click"/>
+            <Button x:Name="buttonEmployeeShowByBranchNumber" Content="Show" Grid.Row="1" Grid.Column="2" Click="buttonEmployeeShowByBranchNumber_Click"/>
+            <Button x:Name="buttonEmployeeShowBySalary" Content="Show" Grid.Row="2" Grid.Column="2" Click="buttonEmployeeShowBySalary_Click"/>
+            <Button x:Name="buttonEmployeeShowSales" Content="Show" Grid.Row="3" Grid.Column="2" Click="buttonEmployeeShowSales_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>

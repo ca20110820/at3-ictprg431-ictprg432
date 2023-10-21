@@ -1,0 +1,57 @@
+﻿<Window x:Class="AT3Project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AT3Project"
+        xmlns:uControl="clr-namespace:AT3Project.UserControlTables"
+        mc:Ignorable="d"
+        Title="IOT Database" Height="450" Width="1150" ResizeMode="NoResize">
+    <StackPanel>
+        <!-- Menu -->
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem x:Name="menuitemFile_Close" Header="_Close" Click="menuitemFile_Close_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem x:Name="menuitemEdit_Clear" Header="_Clear" Click="menuitemEdit_Clear_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Settings">
+                    <MenuItem x:Name="menuitemSettings_Connection" Header="_Connection" Click="menuitemSettings_Connection_Click" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+        <!-- Tab Control -->
+        <TabControl x:Name="tabcontrolTables" BorderThickness="0,0,0,0">
+            <!-- TabItem: Home -->
+            <TabItem x:Name="tabitemHome" Header="Home">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Source="./Assets/IOT-Logo.png" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform" Width="300" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock TextWrapping="WrapWithOverflow" Grid.Row="1" Grid.Column="0" FontSize="12" HorizontalAlignment="Center">
+                        Incredibly Obvious Technologies are a multifaceted company who provide software development, 3D designs, and printing, and other skills to a wide variety of customers.
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <!-- TabItem: Employees -->
+            <TabItem x:Name="tabitemEmployees" Header="Employees">
+                <uControl:EmployeesUserControl x:Name="usercontrolEmployees"/>
+            </TabItem>
+
+            <!-- TabItem: Branches -->
+            <TabItem x:Name="tabitemBranches" Header="Branches">
+                <uControl:BranchesUserControl/>
+            </TabItem>
+
+        </TabControl>
+    </StackPanel>
+</Window>

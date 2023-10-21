@@ -1,0 +1,39 @@
+﻿<Window x:Class="AT3Project.OtherWindows.ConnectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AT3Project.OtherWindows"
+        mc:Ignorable="d"
+        Title="Connection" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Server" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="30" FontWeight="Bold" FontFamily="Arial Black"/>
+        <Label Content="Port" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="30" FontWeight="Bold" FontFamily="Arial Black"/>
+        <Label Content="User" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="30" FontWeight="Bold" FontFamily="Arial Black"/>
+        <Label Content="Password" Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="30" FontWeight="Bold" FontFamily="Arial Black"/>
+        <Label Content="Database name" Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="30" FontWeight="Bold" FontFamily="Arial Black"/>
+
+        <TextBox x:Name="textboxDBServer" Text="{Binding DBServer, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" />
+        <TextBox x:Name="textboxDBPort" Text="{Binding DBPort, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" />
+        <TextBox x:Name="textboxDBUser" Text="{Binding DBUser, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" />
+        <PasswordBox x:Name="passwordboxDBPass" Password="" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30"/>
+        <TextBox x:Name="textboxDBName" Text="{Binding DBName, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+            <Button x:Name="buttonSettingConnectionSave" Content="Save" MinWidth="75" Margin="1,10,1,10" Click="buttonSettingConnectionSave_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
