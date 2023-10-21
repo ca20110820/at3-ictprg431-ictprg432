@@ -31,6 +31,8 @@ namespace AT3Project.OtherWindows
             this.mainWindow = mainWindow;
 
             textboxNonQuery.PreviewKeyDown += textboxNonQuery_PreviewKeyDown;
+
+            UpdateTableNamesListView();
         }
 
         private DataView? GetTableNameAsView(string tableName)
@@ -108,6 +110,11 @@ namespace AT3Project.OtherWindows
         private void listviewTables_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void buttonRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateTableNamesListView();
         }
     }
 }

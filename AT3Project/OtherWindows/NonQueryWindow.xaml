@@ -31,10 +31,13 @@
         <WrapPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="buttonRunNonQuery" Content="Run" Margin="10,10,10,15" HorizontalAlignment="Stretch" Width="100" MinWidth="50" 
                     Click="buttonRunNonQuery_Click"/>
+            <Button x:Name="buttonRefresh" Content="Refresh" Margin="10,10,10,15" HorizontalAlignment="Stretch" Width="100" MinWidth="50" 
+                    Click="buttonRefresh_Click" />
         </WrapPanel>
 
         <WrapPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" 
                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5,5,5,5">
+            <Label Content="Tables: " FontSize="20" FontWeight="Bold"/>
             <ListView x:Name="listviewTables" SelectionChanged="listviewTables_SelectionChanged" />
         </WrapPanel>
 
