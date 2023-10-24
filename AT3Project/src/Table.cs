@@ -211,6 +211,12 @@ namespace AT3Project.src
             
             database.RunNonQuery(sqlNonQuery);
         }
+
+        public void DeleteBranch(int id)
+        {
+            string sqlNonQuery = $"DELETE FROM {TableName} WHERE id={id};";
+            database.RunNonQuery(sqlNonQuery);
+        }
     }
 
     public class Client : Table
