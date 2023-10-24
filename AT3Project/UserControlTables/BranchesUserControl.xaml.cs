@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +34,12 @@ namespace AT3Project.UserControlTables
         public BranchesUserControl()
         {
             InitializeComponent();
+        }
+
+        public void RefreshBranchDataContext()
+        {
+            DataContext = null;
+            DataContext = RootWindow.branch;
         }
 
         private void buttonBranchAdd_Click(object sender, RoutedEventArgs e)
@@ -75,7 +83,22 @@ namespace AT3Project.UserControlTables
 
         private void datagridBranches_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            DataRowView row = (DataRowView)datagridBranches.SelectedItem;
 
+            if (row == null)
+            {
+                return;
+            }
+
+            try
+            {
+                RootWindow.branch.GetBranch(int.Parse(row["id"].ToString()));
+                RefreshBranchDataContext();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
         }
     }
 }

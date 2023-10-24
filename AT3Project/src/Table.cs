@@ -215,7 +215,7 @@ namespace AT3Project.src
                 ID = int.Parse(dtRow["id"].ToString());
                 BranchName = dtRow["branch_name"].ToString();
                 ManagerID = int.Parse(dtRow["manager_id"].ToString());
-                ManagerStartedAt = DateTime.Parse(dtRow["manager_id"].ToString());
+                ManagerStartedAt = DateTime.Parse(dtRow["manager_started_at"].ToString());
             }
         }
 
