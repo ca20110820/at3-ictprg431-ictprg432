@@ -217,6 +217,16 @@ namespace AT3Project.src
             string sqlNonQuery = $"DELETE FROM {TableName} WHERE id={id};";
             database.RunNonQuery(sqlNonQuery);
         }
+
+        public void UpdateBranch(int branchID, string newBranchName, int newManagerID, DateTime newManagerStartedAt)
+        {
+            string cleanDate = newManagerStartedAt.ToString("yyyy-MM-dd");
+
+            string sqlNonQuery = $"UPDATE {TableName} " +
+                $"SET branch_name={newBranchName}, manager_id={newManagerID}, manager_started_at={cleanDate}" +
+                $"WHERE id={branchID};";
+            database.RunNonQuery(sqlNonQuery);
+        }
     }
 
     public class Client : Table
