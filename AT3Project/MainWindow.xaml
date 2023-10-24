@@ -56,7 +56,7 @@
 
             <!-- TabItem: Branches -->
             <TabItem x:Name="tabitemBranches" Header="Branches">
-                <uControl:BranchesUserControl/>
+                <uControl:BranchesUserControl x:Name="usercontrolBranches"/>
             </TabItem>
 
         </TabControl>
