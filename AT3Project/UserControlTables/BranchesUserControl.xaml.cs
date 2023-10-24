@@ -51,7 +51,15 @@ namespace AT3Project.UserControlTables
 
         private void buttonBranchShowAll_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                datagridBranches.ItemsSource = null;
+                datagridBranches.ItemsSource = RootWindow.branch.GetAll();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
         }
 
         private void datagridBranches_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
