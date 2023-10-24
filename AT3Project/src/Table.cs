@@ -201,6 +201,16 @@ namespace AT3Project.src
             this.database = database;
             TableName = "branches";
         }
+
+        public void AddBranch(Branch branch)
+        {
+            string cleanDate = branch.ManagerStartedAt.ToString("yyyy-MM-dd");
+
+            string sqlNonQuery = $"INSERT INTO {TableName} (branch_name, manager_id, manager_started_at) VALUES " +
+                @$"({branch.BranchName}, {branch.ManagerID}, {cleanDate});";
+            
+            database.RunNonQuery(sqlNonQuery);
+        }
     }
 
     public class Client : Table
