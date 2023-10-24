@@ -42,6 +42,26 @@ namespace AT3Project.UserControlTables
             DataContext = RootWindow.branch;
         }
 
+        public void ClearAll()
+        {
+            ClearBranchForms();
+            ClearDataGrid();
+        }
+
+        public void ClearBranchForms()
+        {
+            textboxBranchID.Text = string.Empty;
+            textboxBranchName.Text = string.Empty;
+            textboxBranchManagerID.Text = string.Empty;
+            datepickerBranchManagerStartedAt.SelectedDate = null;
+            datagridBranches.SelectedItem = null;
+        }
+
+        public void ClearDataGrid()
+        {
+            datagridBranches.ItemsSource = null;
+        }
+
         private void buttonBranchAdd_Click(object sender, RoutedEventArgs e)
         {
 

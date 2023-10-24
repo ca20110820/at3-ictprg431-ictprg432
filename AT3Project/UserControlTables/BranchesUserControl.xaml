@@ -23,10 +23,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition/>
+                <RowDefinition Height="56.25"/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Label Content="ID" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
@@ -47,13 +47,13 @@
             <Button x:Name="buttonBranchDelete" Content="Delete" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonBranchDelete_Click" />
             <Button x:Name="buttonBranchShowAll" Content="Show All" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonBranchShowAll_Click" />
         </StackPanel>
-        
+
         <!-- DataGrid -->
         <DataGrid x:Name="datagridBranches" Grid.Row="0" Grid.Column="1" IsReadOnly="True" VerticalAlignment="Stretch"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="200" 
                   AutoGeneratingColumn="datagridBranches_AutoGeneratingColumn" SelectionChanged="datagridBranches_SelectionChanged" >
         </DataGrid>
-        
+
         <!-- Viewing -->
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
