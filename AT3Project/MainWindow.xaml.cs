@@ -34,6 +34,11 @@ namespace AT3Project
         {
             InitializeComponent();
 
+            Init();
+        }
+
+        public bool Init()
+        {
             ConnectionWindow connectionWindow = new(this);  // Set the Connection Configuration
             try
             {
@@ -43,10 +48,12 @@ namespace AT3Project
 
                 // Set Properties for Other Windows and/or UserControl's
                 usercontrolEmployees.comboboxEmployeeShowByBranchNumber.ItemsSource = branch.GetColumnUniqueValues("id").ConvertAll(x => int.Parse(x.ToString())).ToList();
+                return true;
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message, "Error");
+                return false;
             }
         }
 

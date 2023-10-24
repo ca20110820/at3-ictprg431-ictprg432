@@ -33,7 +33,8 @@
         <TextBox x:Name="textboxDBName" Text="{Binding DBName, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-            <Button x:Name="buttonSettingConnectionSave" Content="Save" MinWidth="75" Margin="1,10,1,10" Click="buttonSettingConnectionSave_Click"/>
+            <Button x:Name="buttonSettingConnectionSave" Content="Save" MinWidth="75" Margin="7" Click="buttonSettingConnectionSave_Click"/>
+            <Button x:Name="buttonSettingConnectionTestConnection" Content="Test Connection" MinWidth="75" Margin="7" Click="buttonSettingConnectionTestConnection_Click" />
         </StackPanel>
     </Grid>
 </Window>

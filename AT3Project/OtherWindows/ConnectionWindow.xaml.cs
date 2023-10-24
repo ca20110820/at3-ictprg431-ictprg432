@@ -74,5 +74,28 @@ namespace AT3Project.OtherWindows
                 MessageBox.Show(error.ToString(), "Error");
             }
         }
+
+        private void buttonSettingConnectionTestConnection_Click(object sender, RoutedEventArgs e)
+        {
+            // Test Connection
+            MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            try
+            {
+                bool connectionResult = mainWindow.Init();
+                if (connectionResult)
+                {
+                    MessageBox.Show("Connection Success!");
+                }
+                else
+                {
+                    MessageBox.Show("Connection Failed!");
+                }
+            }
+            catch(Exception error)
+            {
+                Trace.WriteLine(error.ToString());
+                MessageBox.Show("Connection Failed!");
+            }
+        }
     }
 }
