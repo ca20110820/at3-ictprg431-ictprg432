@@ -110,6 +110,7 @@ namespace AT3Project
                 Trace.WriteLine(new string('=', 100));
                 Trace.WriteLine(error.Message);
                 Trace.WriteLine(new string('=', 100));
+                MessageBox.Show(error.Message);
             }
         }
     }
