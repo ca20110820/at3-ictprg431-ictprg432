@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\create_and_load_db.txt" />
     <None Remove="Assets\IOT-Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\create_and_load_db.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

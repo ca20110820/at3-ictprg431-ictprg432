@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ using System.Windows.Shapes;
 using AT3Project.UserControlTables;
 using AT3Project.OtherWindows;
 using AT3Project.src;
-
+using System.Diagnostics;
 
 namespace AT3Project
 {
@@ -46,7 +47,7 @@ namespace AT3Project
             catch (Exception error)
             {
                 MessageBox.Show(error.Message, "Error");
-            }   
+            }
         }
 
         private void menuitemFile_Close_Click(object sender, RoutedEventArgs e)
@@ -87,6 +88,29 @@ namespace AT3Project
         private void Window_Closed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void menuitemSettings_LoadPort1DB_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?\n\nClicking yes would result in " +
+                    "deletion of a database.", "Load Database Confirmation", MessageBoxButton.YesNo);
+                if (messageBoxResult != MessageBoxResult.Yes) return;
+
+                string fileContent = File.ReadAllText("./Assets/create_and_load_db.txt");
+
+                string sqlNonQuery = @$"{fileContent}";
+                database.RunNonQuery(sqlNonQuery);
+            }
+            catch (Exception error)
+            {
+                Trace.WriteLine(new string('=', 100));
+                Trace.WriteLine(error.ToString());
+                Trace.WriteLine(new string('=', 100));
+                Trace.WriteLine(error.Message);
+                Trace.WriteLine(new string('=', 100));
+            }
         }
     }
 }

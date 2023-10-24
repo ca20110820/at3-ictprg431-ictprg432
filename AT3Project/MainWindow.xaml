@@ -25,6 +25,7 @@
                 </MenuItem>
                 <MenuItem Header="_Settings">
                     <MenuItem x:Name="menuitemSettings_Connection" Header="_Connection" Click="menuitemSettings_Connection_Click" />
+                    <MenuItem x:Name="menuitemSettings_LoadPort1DB" Header="_Load Initial Data" Click="menuitemSettings_LoadPort1DB_Click" />
                 </MenuItem>
             </Menu>
         </DockPanel>
