@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AT3Project"
         xmlns:uControl="clr-namespace:AT3Project.UserControlTables"
         mc:Ignorable="d"
-        Title="IOT Database" Height="450" Width="1150" ResizeMode="NoResize">
+        Title="IOT Database" Height="450" Width="1150" ResizeMode="NoResize" Closed="Window_Closed">
     <StackPanel>
         <!-- Menu -->
         <DockPanel>

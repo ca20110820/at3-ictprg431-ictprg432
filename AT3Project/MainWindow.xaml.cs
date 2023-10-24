@@ -83,5 +83,10 @@ namespace AT3Project
             NonQueryWindow nonQueryWindow = new NonQueryWindow(this);
             nonQueryWindow.Show();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
