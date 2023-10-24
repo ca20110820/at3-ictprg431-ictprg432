@@ -202,6 +202,23 @@ namespace AT3Project.src
             TableName = "branches";
         }
 
+        public void GetBranch(int id)
+        {
+            string sqlQuery = $"SELECT * FROM {TableName} WHERE id={id};";
+
+            DataTable dt = database.RunQuery(sqlQuery);
+
+            Trace.Assert(dt.Rows.Count == 1, "Invalid Branch ID!");
+
+            foreach (DataRow dtRow in dt.Rows)
+            {
+                ID = int.Parse(dtRow["id"].ToString());
+                BranchName = dtRow["branch_name"].ToString();
+                ManagerID = int.Parse(dtRow["manager_id"].ToString());
+                ManagerStartedAt = DateTime.Parse(dtRow["manager_id"].ToString());
+            }
+        }
+
         public void AddBranch(Branch branch)
         {
             string cleanDate = branch.ManagerStartedAt.ToString("yyyy-MM-dd");
