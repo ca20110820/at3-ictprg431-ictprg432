@@ -329,6 +329,7 @@ namespace AT3Project.UserControlTables
             }
 
             DataGridWindow dtWindow = new DataGridWindow(dv, $"Sales of Employee - ({employeeID}) {name}");
+            dtWindow.Background = Brushes.PaleGreen;
             dtWindow.Show();
         }
 

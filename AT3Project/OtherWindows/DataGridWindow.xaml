@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AT3Project.OtherWindows"
         mc:Ignorable="d"
-        Title="Data" Height="Auto" Width="Auto">
+        Title="Data" Height="Auto" Width="Auto" Background="#FFB8EDF7">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
