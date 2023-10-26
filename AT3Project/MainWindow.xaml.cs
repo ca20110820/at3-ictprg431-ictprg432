@@ -76,8 +76,18 @@ namespace AT3Project
 
         private void menuitemSettings_Connection_Click(object sender, RoutedEventArgs e)
         {
-            ConnectionWindow connectionWindow = new();
-            connectionWindow.Show();
+            try
+            {
+                ConnectionWindow connectionWindow = new();
+                connectionWindow.Show();
+                connectionWindow.Activate();
+                connectionWindow.Focus();
+                connectionWindow.Topmost = true;
+            }
+            catch(Exception error)
+            {
+                Trace.WriteLine(error.Message);
+            }
         }
 
         private void menuitemQueries_Query_Click(object sender, RoutedEventArgs e)

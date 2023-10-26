@@ -24,10 +24,15 @@ namespace AT3Project.OtherWindows
     public partial class ConnectionWindow : Window
     {
 
+        public static int instanceCounter = 0;
+
         MainWindow mainWindow;
 
         public ConnectionWindow()
         {
+            instanceCounter++;
+            CheckSingleton();
+
             InitializeComponent();
 
             mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
@@ -58,6 +63,15 @@ namespace AT3Project.OtherWindows
             finally
             {
                 DataContext = mainWindow.database;
+            }
+        }
+
+        private void CheckSingleton()
+        {
+            if (instanceCounter > 1)
+            {
+                instanceCounter = 1;
+                Close();
             }
         }
 
@@ -96,6 +110,11 @@ namespace AT3Project.OtherWindows
                 Trace.WriteLine(error.ToString());
                 MessageBox.Show("Connection Failed!");
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            instanceCounter = 0;
         }
     }
 }
