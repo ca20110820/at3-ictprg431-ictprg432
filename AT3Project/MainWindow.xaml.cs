@@ -48,6 +48,7 @@ namespace AT3Project
 
                 // Set Properties for Other Windows and/or UserControl's
                 usercontrolEmployees.comboboxEmployeeShowByBranchNumber.ItemsSource = branch.GetColumnUniqueValues("id").ConvertAll(x => int.Parse(x.ToString())).ToList();
+                usercontrolEmployees.RefreshGenderIdentityComboBox();
                 return true;
             }
             catch (Exception error)

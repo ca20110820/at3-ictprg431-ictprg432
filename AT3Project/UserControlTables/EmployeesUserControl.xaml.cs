@@ -38,7 +38,7 @@ namespace AT3Project.UserControlTables
             InitializeComponent();
         }
 
-        private void RefreshGenderIdentityComboBox()
+        public void RefreshGenderIdentityComboBox()
         {
             comboboxEmployeeGenderIdentity.ItemsSource = null;
             comboboxEmployeeGenderIdentity.ItemsSource = new List<string>() { "M", "F", "" };
