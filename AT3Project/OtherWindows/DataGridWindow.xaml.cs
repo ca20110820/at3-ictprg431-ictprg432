@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,17 @@ namespace AT3Project.OtherWindows
     /// </summary>
     public partial class DataGridWindow : Window
     {
-        public DataGridWindow(DataView dv, string title, int height = 400, int width = 400, bool AutoSize = false)
+
+        /// <summary>
+        /// Callback for when DataGrid Selection Changed. This require to be binded outside.
+        /// </summary>
+        public Action? callback { get; set; }
+
+        public DataGridWindow(DataView dv, string title, int height = 400, int width = 400, bool AutoSize = false, Action? callback = null)
         {
             InitializeComponent();
 
+            this.callback = callback;
 
             Height = height;
             Width = width;
@@ -44,6 +52,19 @@ namespace AT3Project.OtherWindows
 
             if (e.PropertyType == typeof(DateTime))
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy HH:mm:ss";
+        }
+
+        private void datagridPresentation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView selectedRow = (DataRowView)datagridPresentation.SelectedItem;
+            Trace.WriteLine(selectedRow);
+
+
+            // Execute Callback
+            if (callback != null)
+            {
+                callback();
+            }
         }
     }
 }

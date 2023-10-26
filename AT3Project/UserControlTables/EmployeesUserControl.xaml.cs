@@ -340,12 +340,42 @@ namespace AT3Project.UserControlTables
 
                 DataView dv = RootWindow.database.GetQueryAsDataView(sqlQuery);
 
-                DataGridWindow datagridWindow = new(dv, "Employee Sales");
+                DataGridWindow datagridWindow = new(dv, "Employee Sales", callback: ShowSelectedEmployeeSalesByClient);
                 datagridWindow.Show();
             }
             catch(Exception error)
             {
                 MessageBox.Show(error.Message, "Error");
+            }
+        }
+
+        public void ShowSelectedEmployeeSalesByClient()
+        {
+            Trace.WriteLine("Testing Binded Callback");
+            IEnumerable<DataGridWindow> windows = Application.Current.Windows.OfType<DataGridWindow>();
+            DataGridWindow? employeeSalesWindow = null;
+            foreach (DataGridWindow window in windows)
+            {
+                if (window.Title == "Employee Sales")
+                {
+                    employeeSalesWindow = window;
+                    break;
+                }
+            }
+            if (employeeSalesWindow == null) return;
+
+            try
+            {
+                DataRowView drv = (DataRowView)employeeSalesWindow.datagridPresentation.SelectedItem;
+
+                DataView dv = RootWindow.employee.ShowEmployeeSales(int.Parse(drv["id"].ToString()));
+
+                DataGridWindow employeeSalesByClients = new(dv, drv["Employee"].ToString());
+                employeeSalesByClients.Show();
+            }
+            catch (Exception error)
+            {
+                Trace.WriteLine (error.ToString(), "Error");
             }
         }
     }
