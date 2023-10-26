@@ -26,11 +26,11 @@ namespace AT3Project.OtherWindows
 
         MainWindow mainWindow;
 
-        public ConnectionWindow(MainWindow mainWindow)
+        public ConnectionWindow()
         {
             InitializeComponent();
 
-            this.mainWindow = mainWindow;
+            mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
 
             try
             {

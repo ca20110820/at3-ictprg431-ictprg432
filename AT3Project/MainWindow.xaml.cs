@@ -39,7 +39,7 @@ namespace AT3Project
 
         public bool Init()
         {
-            ConnectionWindow connectionWindow = new(this);  // Set the Connection Configuration
+            ConnectionWindow connectionWindow = new();  // Set the Connection Configuration
             try
             {
                 // Instantiate Tables
@@ -76,7 +76,7 @@ namespace AT3Project
 
         private void menuitemSettings_Connection_Click(object sender, RoutedEventArgs e)
         {
-            ConnectionWindow connectionWindow = new(this);
+            ConnectionWindow connectionWindow = new();
             connectionWindow.Show();
         }
 
