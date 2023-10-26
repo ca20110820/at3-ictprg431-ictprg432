@@ -62,9 +62,9 @@ VALUES
 INSERT INTO `employees` 
     (`date_of_birth`, `id`, `family_name`, `branch_id`, `supervisor_id`, `given_name`, `gross_salary`, `gender_identity`) 
 VALUES
-    ('1964-03-15', 102, 'Scott', 2, 100, 'Michael', 75000, 'O'),
+    ('1964-03-15', 102, 'Scott', 2, 100, 'Michael', 75000, 'M'),
     ('1971-06-25', 103, 'Martin', 2, 102, 'Angela', 63000, 'F'),
-    ('1980-02-05', 104, 'Kapoor', 2, 102, 'Kelly', 55000, 'O'),
+    ('1980-02-05', 104, 'Kapoor', 2, 102, 'Kelly', 55000, 'F'),
     ('1958-02-19', 105, 'Hudson', 2, 102, 'Stanley', 69000, 'M'),
     ('1969-09-05', 106, 'Porter', 3, 100, 'Josh', 78000, 'M'),
     ('1973-07-22', 107, 'Bernard', 3, 106, 'Andy', 65000, 'M'),
