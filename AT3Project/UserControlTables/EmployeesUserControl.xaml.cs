@@ -336,7 +336,7 @@ namespace AT3Project.UserControlTables
         {
             try
             {
-                string sqlQuery = $"SELECT\r\n\ttbl.Employee,\r\n\tSUM(tbl.total_sales) AS `Total Sales`\r\nFROM \r\n\t(\r\n\t\tSELECT \r\n\t\t\tworking_with.*, \r\n\t\t\tCONCAT(employees.given_name, \" \", employees.family_name) AS `Employee`\r\n\t\tFROM working_with\r\n\t\tLEFT JOIN employees ON working_with.employee_id=employees.id\r\n\t\t-- LEFT JOIN clients ON working_with.client_id=clients.id\r\n\t\t-- WHERE working_with.employee_id={{employeeID}}\r\n\t) AS tbl\r\nGROUP BY tbl.Employee\r\n;";
+                string sqlQuery = $"SELECT\r\n\ttbl.employee_id AS `id`,\r\n\ttbl.Employee,\r\n\tSUM(tbl.total_sales) AS `Total Sales`\r\nFROM \r\n\t(\r\n\t\tSELECT \r\n\t\t\tworking_with.*, \r\n\t\t\tCONCAT(employees.given_name, \" \", employees.family_name) AS `Employee`\r\n\t\tFROM working_with\r\n\t\tLEFT JOIN employees ON working_with.employee_id=employees.id\r\n\t\t-- LEFT JOIN clients ON working_with.client_id=clients.id\r\n\t\t-- WHERE working_with.employee_id={{employeeID}}\r\n\t) AS tbl\r\nGROUP BY tbl.employee_id\r\n;";
 
                 DataView dv = RootWindow.database.GetQueryAsDataView(sqlQuery);
 
