@@ -58,6 +58,7 @@
             <Button x:Name="buttonEmployeeUpdate" Content="Update" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonEmployeeUpdate_Click"/>
             <Button x:Name="buttonEmployeeDelete" Content="Delete" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonEmployeeDelete_Click"/>
             <Button x:Name="buttonEmployeeShowAll" Content="Show All" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonEmployeeShowAll_Click"/>
+            <Button x:Name="buttonEmployeeShowSalesByName" Content="Show Sales" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonEmployeeShowSalesByName_Click" />
         </StackPanel>
 
         <!-- DataGrid -->
