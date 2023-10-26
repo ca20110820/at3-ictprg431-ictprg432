@@ -201,6 +201,49 @@ namespace AT3Project.src
             this.database = database;
             TableName = "branches";
         }
+
+        public void GetBranch(int id)
+        {
+            string sqlQuery = $"SELECT * FROM {TableName} WHERE id={id};";
+
+            DataTable dt = database.RunQuery(sqlQuery);
+
+            Trace.Assert(dt.Rows.Count == 1, "Invalid Branch ID!");
+
+            foreach (DataRow dtRow in dt.Rows)
+            {
+                ID = int.Parse(dtRow["id"].ToString());
+                BranchName = dtRow["branch_name"].ToString();
+                ManagerID = int.Parse(dtRow["manager_id"].ToString());
+                ManagerStartedAt = DateTime.Parse(dtRow["manager_started_at"].ToString());
+            }
+        }
+
+        public void AddBranch(Branch branch)
+        {
+            string cleanDate = branch.ManagerStartedAt.ToString("yyyy-MM-dd");
+
+            string sqlNonQuery = $"INSERT INTO {TableName} (branch_name, manager_id, manager_started_at) VALUES " +
+                @$"({branch.BranchName}, {branch.ManagerID}, {cleanDate});";
+            
+            database.RunNonQuery(sqlNonQuery);
+        }
+
+        public void DeleteBranch(int id)
+        {
+            string sqlNonQuery = $"DELETE FROM {TableName} WHERE id={id};";
+            database.RunNonQuery(sqlNonQuery);
+        }
+
+        public void UpdateBranch(int branchID, string newBranchName, int newManagerID, DateTime newManagerStartedAt)
+        {
+            string cleanDate = newManagerStartedAt.ToString("yyyy-MM-dd");
+
+            string sqlNonQuery = $"UPDATE {TableName} " +
+                $"SET branch_name={newBranchName}, manager_id={newManagerID}, manager_started_at={cleanDate}" +
+                $"WHERE id={branchID};";
+            database.RunNonQuery(sqlNonQuery);
+        }
     }
 
     public class Client : Table

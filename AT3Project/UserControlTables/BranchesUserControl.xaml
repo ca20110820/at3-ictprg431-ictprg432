@@ -7,6 +7,61 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1.7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Forms -->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="ID" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Branch Name" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Manager ID" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Manager Started At" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+
+            <TextBox x:Name="textboxBranchID" Text="{Binding ID, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <TextBox x:Name="textboxBranchName" Text="{Binding BranchName, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <TextBox x:Name="textboxBranchManagerID" Text="{Binding ManagerID, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <DatePicker x:Name="datepickerBranchManagerStartedAt" SelectedDate="{Binding ManagerStartedAt, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </Grid>
+
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,25,0,0">
+            <Button x:Name="buttonBranchAdd" Content="Add" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonBranchAdd_Click" />
+            <Button x:Name="buttonBranchUpdate" Content="Update" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonBranchUpdate_Click" />
+            <Button x:Name="buttonBranchDelete" Content="Delete" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonBranchDelete_Click" />
+            <Button x:Name="buttonBranchShowAll" Content="Show All" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonBranchShowAll_Click" />
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="datagridBranches" Grid.Row="0" Grid.Column="1" IsReadOnly="True" VerticalAlignment="Stretch"
+                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="200" 
+                  AutoGeneratingColumn="datagridBranches_AutoGeneratingColumn" SelectionChanged="datagridBranches_SelectionChanged" >
+        </DataGrid>
+
+        <!-- Viewing -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </UserControl>
