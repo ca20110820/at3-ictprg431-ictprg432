@@ -158,7 +158,11 @@ namespace AT3Project.UserControlTables
         private void buttonEmployeeUpdate_Click(object sender, RoutedEventArgs e)
         {
             DataRowView selectedEmployee = (DataRowView)datagridEmployees.SelectedItem;
-            if (selectedEmployee == null) return;
+            if (selectedEmployee == null)
+            {
+                MessageBox.Show("Please select an employee.", "Warn");
+                return;
+            }
 
             try
             {
@@ -183,7 +187,11 @@ namespace AT3Project.UserControlTables
         private void buttonEmployeeDelete_Click(object sender, RoutedEventArgs e)
         {
             DataRowView selectedEmployee = (DataRowView)datagridEmployees.SelectedItem;
-            if (selectedEmployee == null) return;
+            if (selectedEmployee == null)
+            {
+                MessageBox.Show("Please select an employee.", "Warn");
+                return;
+            }
 
             try
             {
