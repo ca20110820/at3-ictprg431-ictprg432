@@ -124,7 +124,19 @@ namespace AT3Project.UserControlTables
 
         private void buttonClientUpdate_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                int selectedID = int.Parse(textboxClientID.Text);
+                string clientName = textboxClientName.Text;
+                int branchID = (int)comboboxClientBranchID.SelectedItem;
 
+                RootWindow.client.UpdateClient(selectedID, clientName, branchID);
+                RefreshDataGrid();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
         }
 
         private void buttonClientDelete_Click(object sender, RoutedEventArgs e)
