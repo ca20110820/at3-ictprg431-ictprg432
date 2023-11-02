@@ -63,12 +63,7 @@ namespace AT3Project
             }
         }
 
-        private void menuitemFile_Close_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void menuitemEdit_Clear_Click(object sender, RoutedEventArgs e)
+        public void ClearAll()
         {
             try
             {
@@ -80,6 +75,16 @@ namespace AT3Project
             {
                 MessageBox.Show(error.Message, "Error");
             }
+        }
+
+        private void menuitemFile_Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void menuitemEdit_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
         }
 
         private void menuitemSettings_Connection_Click(object sender, RoutedEventArgs e)
@@ -127,6 +132,8 @@ namespace AT3Project
 
                 string sqlNonQuery = @$"{fileContent}";
                 database.RunNonQuery(sqlNonQuery);
+
+                ClearAll();
             }
             catch (Exception error)
             {
