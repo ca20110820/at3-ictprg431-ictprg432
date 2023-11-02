@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +35,12 @@ namespace AT3Project.UserControlTables
             InitializeComponent();
         }
 
+        public void RefreshClientDataContext()
+        {
+            DataContext = null;
+            DataContext = RootWindow.client;
+        }
+
         public void ClearAll()
         {
             ClearClientForms();
@@ -64,7 +72,20 @@ namespace AT3Project.UserControlTables
 
         private void datagridClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            DataRowView selectedClient = (DataRowView)datagridClients.SelectedItem;
 
+            if (selectedClient == null) return;
+
+            try
+            {
+                RootWindow.client.GetClient(int.Parse(selectedClient["id"].ToString()));
+                RefreshClientDataContext();
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+                Trace.WriteLine(error.ToString());
+            }
         }
 
         private void buttonClientAdd_Click(object sender, RoutedEventArgs e)
