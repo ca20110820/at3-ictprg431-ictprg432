@@ -105,7 +105,15 @@ namespace AT3Project.UserControlTables
 
         private void buttonClientShowAll_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                datagridClients.ItemsSource = null;
+                datagridClients.ItemsSource = RootWindow.client.GetAll();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
         }
     }
 }
