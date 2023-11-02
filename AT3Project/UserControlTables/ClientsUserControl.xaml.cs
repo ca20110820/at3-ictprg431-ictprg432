@@ -41,6 +41,19 @@ namespace AT3Project.UserControlTables
             DataContext = RootWindow.client;
         }
 
+        public void RefreshDataGrid()
+        {
+            try
+            {
+                datagridClients.ItemsSource = null;
+                datagridClients.ItemsSource = RootWindow.client.GetAll();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
+        }
+
         public void ClearAll()
         {
             ClearClientForms();
@@ -91,6 +104,22 @@ namespace AT3Project.UserControlTables
         private void buttonClientAdd_Click(object sender, RoutedEventArgs e)
         {
 
+            try
+            {
+                int id = int.Parse(textboxClientID.Text);
+                string clientName = textboxClientName.Text;
+                int branchID = (int)comboboxClientBranchID.SelectedItem;
+
+                src.Client newClient = new src.Client(id, clientName, branchID);
+
+                RootWindow.client.AddClient(newClient);
+
+                RefreshDataGrid();
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
         }
 
         private void buttonClientUpdate_Click(object sender, RoutedEventArgs e)
