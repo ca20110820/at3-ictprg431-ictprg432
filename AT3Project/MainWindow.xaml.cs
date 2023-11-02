@@ -74,6 +74,7 @@ namespace AT3Project
             {
                 usercontrolEmployees.ClearAll();
                 usercontrolBranches.ClearAll();
+                usercontrolClients.ClearAll();
             }
             catch (Exception error)
             {

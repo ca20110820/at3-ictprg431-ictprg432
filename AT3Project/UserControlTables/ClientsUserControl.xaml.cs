@@ -33,6 +33,24 @@ namespace AT3Project.UserControlTables
             InitializeComponent();
         }
 
+        public void ClearAll()
+        {
+            ClearClientForms();
+            ClearDataGrid();
+        }
+
+        public void ClearClientForms()
+        {
+            textboxClientID.Text = string.Empty;
+            textboxClientID.Text = string.Empty;
+            comboboxClientBranchID.SelectedItem = null;
+        }
+
+        public void ClearDataGrid()
+        {
+            datagridClients.ItemsSource = null;
+        }
+
         private void datagridClients_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string header = e.Column.Header.ToString();
