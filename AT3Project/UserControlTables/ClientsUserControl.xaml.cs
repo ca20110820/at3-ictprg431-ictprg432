@@ -20,9 +20,19 @@ namespace AT3Project.UserControlTables
     /// </summary>
     public partial class ClientsUserControl : UserControl
     {
+        public MainWindow RootWindow
+        {
+            get
+            {
+                return Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            }
+        }
+
         public ClientsUserControl()
         {
             InitializeComponent();
         }
+
+
     }
 }

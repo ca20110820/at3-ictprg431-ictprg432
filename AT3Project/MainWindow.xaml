@@ -59,6 +59,11 @@
                 <uControl:BranchesUserControl x:Name="usercontrolBranches"/>
             </TabItem>
 
+            <!-- TabItem: Clients -->
+            <TabItem x:Name="tabitemClients" Header="Clients">
+                <uControl:ClientsUserControl x:Name="usercontrolClients"/>
+            </TabItem>
+
         </TabControl>
     </StackPanel>
 </Window>
