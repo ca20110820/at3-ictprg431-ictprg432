@@ -248,7 +248,70 @@ namespace AT3Project.src
 
     public class Client : Table
     {
+        public int ID { get; set; }
 
+        public string ClientName { get; set; }
+
+        public int BranchID { get; set; }
+
+        public Client(DB database)
+        {
+            Init(database);
+        }
+
+        public Client(int id, string client_name, int branch_id)
+        {
+            ID = id;
+            ClientName = client_name;
+            BranchID = branch_id;
+
+            TableName = "clients";
+        }
+
+        private void Init(DB database)
+        {
+            this.database = database;
+            TableName = "clients";
+        }
+
+        public void GetClient(int id)
+        {
+            string sqlQuery = $"SELECT * FROM {TableName} WHERE id={id};";
+
+            DataTable dt = database.RunQuery(sqlQuery);
+
+            Trace.Assert(dt.Rows.Count == 1, "The Given ID has 2 duplicates!");
+
+            foreach (DataRow dtRow in dt.Rows)
+            {
+                ID = int.Parse(dtRow["id"].ToString());
+                ClientName = dtRow["client_name"].ToString();
+                BranchID = int.Parse(dtRow["branch_id"].ToString());
+            }
+        }
+
+        public void AddClient(Client client)
+        {
+            
+            string sqlNonQuery = $"INSERT INTO {TableName} (id, client_name, branch_id) VALUES " +
+                $"({client.ID}, '{client.ClientName}', {client.BranchID});";
+
+            database.RunNonQuery(sqlNonQuery);
+        }
+
+        public void DeleteClient(int id)
+        {
+            string sqlNonQuery = $"DELETE FROM {TableName} WHERE id={id};";
+            database.RunNonQuery(sqlNonQuery);
+        }
+
+        public void UpdateClient(int clientID, string newClientName, int newBranchID)
+        {
+            string sqlNonQuery = $"UPDATE {TableName} " +
+                $"SET client_name='{newClientName}', branch_id={newBranchID} " +
+                $"WHERE id={clientID};";
+            database.RunNonQuery(sqlNonQuery);
+        }
     }
 
     public class BranchSupplier : Table
