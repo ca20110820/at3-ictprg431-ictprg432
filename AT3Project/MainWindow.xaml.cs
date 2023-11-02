@@ -50,10 +50,10 @@ namespace AT3Project
                 client = new(database);
 
                 // Set Properties for Other Windows and/or UserControl's
-                usercontrolEmployees.comboboxEmployeeShowByBranchNumber.ItemsSource = branch.GetColumnUniqueValues("id").ConvertAll(x => int.Parse(x.ToString())).ToList();
+                usercontrolEmployees.comboboxEmployeeShowByBranchNumber.ItemsSource = branch.GetColumnUniqueValues("id").ConvertAll(x => int.Parse(x.ToString())).Cast<int>().ToList();
                 usercontrolEmployees.RefreshGenderIdentityComboBox();
 
-                usercontrolClients.comboboxClientBranchID.ItemsSource = branch.GetColumnUniqueValues("id").ConvertAll(x => int.Parse(x.ToString())).ToList();
+                usercontrolClients.comboboxClientBranchID.ItemsSource = branch.GetColumnUniqueValues("id").ConvertAll(x => int.Parse(x.ToString())).Cast<int>().ToList();
                 return true;
             }
             catch (Exception error)

@@ -28,9 +28,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Label Content="ID" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
-            <Label Content="Client Name" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
-            <Label Content="Branch ID" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="ID" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Client Name" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Branch ID" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontSize="14" FontWeight="ExtraBold" />
 
             <TextBox x:Name="textboxClientID" Text="{Binding ID, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
             <TextBox x:Name="textboxClientName" Text="{Binding ClientName, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>

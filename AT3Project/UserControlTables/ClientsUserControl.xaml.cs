@@ -50,7 +50,7 @@ namespace AT3Project.UserControlTables
         public void ClearClientForms()
         {
             textboxClientID.Text = string.Empty;
-            textboxClientID.Text = string.Empty;
+            textboxClientName.Text = string.Empty;
             comboboxClientBranchID.SelectedItem = null;
         }
 
