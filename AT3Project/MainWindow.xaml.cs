@@ -17,6 +17,7 @@ using AT3Project.UserControlTables;
 using AT3Project.OtherWindows;
 using AT3Project.src;
 using System.Diagnostics;
+using MySqlX.XDevAPI;
 
 namespace AT3Project
 {
@@ -29,6 +30,7 @@ namespace AT3Project
 
         public Employee employee { get; set; }
         public Branch branch { get; set; }
+        public src.Client client { get; set; }
 
         public MainWindow()
         {
@@ -45,10 +47,13 @@ namespace AT3Project
                 // Instantiate Tables
                 employee = new(database);
                 branch = new(database);
+                client = new(database);
 
                 // Set Properties for Other Windows and/or UserControl's
                 usercontrolEmployees.comboboxEmployeeShowByBranchNumber.ItemsSource = branch.GetColumnUniqueValues("id").ConvertAll(x => int.Parse(x.ToString())).ToList();
                 usercontrolEmployees.RefreshGenderIdentityComboBox();
+
+                usercontrolClients.comboboxClientBranchID.ItemsSource = branch.GetColumnUniqueValues("id").ConvertAll(x => int.Parse(x.ToString())).ToList();
                 return true;
             }
             catch (Exception error)

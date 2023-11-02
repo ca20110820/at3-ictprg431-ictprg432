@@ -17,16 +17,51 @@
         </Grid.RowDefinitions>
 
         <!-- Forms -->
-        
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="ID" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Client Name" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+            <Label Content="Branch ID" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" FontWeight="ExtraBold" />
+
+            <TextBox x:Name="textboxClientID" Text="{Binding ID, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <TextBox x:Name="textboxClientName" Text="{Binding ClientName, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <ComboBox x:Name="comboboxClientBranchID" SelectedItem="{Binding BranchID, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </Grid>
 
         <!-- Buttons -->
-        
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,25,0,0">
+            <Button x:Name="buttonClientAdd" Content="Add" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonClientAdd_Click"/>
+            <Button x:Name="buttonClientUpdate" Content="Update" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonClientUpdate_Click"/>
+            <Button x:Name="buttonClientDelete" Content="Delete" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonClientDelete_Click"/>
+            <Button x:Name="buttonClientShowAll" Content="Show All" Margin="10,0,10,0" HorizontalAlignment="Stretch" Width="100" Background="#FF7EF590" Click="buttonClientShowAll_Click"/>
+        </StackPanel>
 
         <!-- DataGrid -->
-        
+        <DataGrid x:Name="datagridClients" Grid.Row="0" Grid.Column="1" IsReadOnly="True" VerticalAlignment="Stretch"
+                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="200" 
+                  AutoGeneratingColumn="datagridClients_AutoGeneratingColumn" SelectionChanged="datagridClients_SelectionChanged" >
+        </DataGrid>
 
         <!-- Views/Filters -->
-        
-        
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+
     </Grid>
 </UserControl>
