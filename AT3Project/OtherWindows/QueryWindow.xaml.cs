@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +31,43 @@ namespace AT3Project.OtherWindows
             this.mainWindow = mainWindow;
 
             textboxQuery.PreviewKeyDown += textboxQuery_PreviewKeyDown;
+        }
+
+        private void SaveSQLQuery()
+        {
+            string sqlText = textboxQuery.Text;
+
+            if (string.IsNullOrEmpty(sqlText))
+            {
+                MessageBox.Show("SQL text is empty.");
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "SQL Files (*.sql)|*.sql|Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+                DefaultExt = "sql",
+                AddExtension = true
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string fileName = saveFileDialog.FileName;
+
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(fileName, false, Encoding.UTF8))
+                    {
+                        writer.Write(sqlText);
+                    }
+
+                    MessageBox.Show("SQL saved to file successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
         }
 
         private void buttonRunQuery_Click(object sender, RoutedEventArgs e)
@@ -72,7 +111,7 @@ namespace AT3Project.OtherWindows
 
         private void buttonSaveQuery_Click(object sender, RoutedEventArgs e)
         {
-
+            SaveSQLQuery();
         }
 
         private void buttonLoadQuery_Click(object sender, RoutedEventArgs e)
