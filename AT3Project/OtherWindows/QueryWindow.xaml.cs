@@ -69,5 +69,20 @@ namespace AT3Project.OtherWindows
             if (e.PropertyType == typeof(DateTime))
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy HH:mm:ss";
         }
+
+        private void buttonSaveQuery_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonLoadQuery_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
