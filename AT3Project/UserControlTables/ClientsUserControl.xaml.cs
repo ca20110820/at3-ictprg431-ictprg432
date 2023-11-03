@@ -141,7 +141,23 @@ namespace AT3Project.UserControlTables
 
         private void buttonClientDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    RootWindow.client.DeleteClient(int.Parse(textboxClientID.Text));
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
+            finally
+            {
+                ClearClientForms();
+                RefreshDataGrid();
+            }
         }
 
         private void buttonClientShowAll_Click(object sender, RoutedEventArgs e)
