@@ -60,12 +60,10 @@ namespace AT3Project.OtherWindows
                     {
                         writer.Write(sqlText);
                     }
-
-                    MessageBox.Show("SQL saved to file successfully.");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show(ex.Message, "Error");
                 }
             }
         }
@@ -89,12 +87,10 @@ namespace AT3Project.OtherWindows
                         string sqlText = reader.ReadToEnd();
                         textboxQuery.Text = sqlText;
                     }
-
-                    MessageBox.Show("SQL script loaded successfully.");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show(ex.Message, "Error");
                 }
             }
         }
