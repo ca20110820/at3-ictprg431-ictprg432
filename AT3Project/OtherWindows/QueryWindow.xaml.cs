@@ -82,7 +82,7 @@ namespace AT3Project.OtherWindows
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
-
+            textboxQuery.Text = string.Empty;
         }
     }
 }
