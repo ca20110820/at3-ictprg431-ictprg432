@@ -70,6 +70,35 @@ namespace AT3Project.OtherWindows
             }
         }
 
+        private void LoadSQLQuery()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "SQL Files (*.sql)|*.sql|Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+                DefaultExt = "sql"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileName = openFileDialog.FileName;
+
+                try
+                {
+                    using (StreamReader reader = new StreamReader(fileName, Encoding.UTF8))
+                    {
+                        string sqlText = reader.ReadToEnd();
+                        textboxQuery.Text = sqlText;
+                    }
+
+                    MessageBox.Show("SQL script loaded successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
         private void buttonRunQuery_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -116,7 +145,7 @@ namespace AT3Project.OtherWindows
 
         private void buttonLoadQuery_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadSQLQuery();
         }
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
